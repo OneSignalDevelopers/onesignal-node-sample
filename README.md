@@ -23,15 +23,9 @@ Take a look at the [OneSignal documentation](https://documentation.onesignal.com
 
 ### Tokens Builder
 
-To authentificate the app, you will need to use your OneSignal account user auth key and the REST API key. Create a key provider object with the function `getToken()` that returns your key.
+To authentificate the app, you will need to use your OneSignal REST API key. Create a key provider object with the function `getToken()` that returns your key.
 
 ```javascript
-const user_key_provider = {
-    getToken() {
-        return  'ONESIGNAL_USER_AUTH_KEY';
-    }
-};
-
  const app_key_provider = {
      getToken() {
          return 'ONESIGNAL_REST_API_KEY';
@@ -40,7 +34,7 @@ const user_key_provider = {
 ```
 
 ### Client Configuration
-We can configure the client using the `createConfiguration()` function. The configuration object can be used to set the `user_key_provider` and `app_key_provider` properties.
+We can configure the client using the `createConfiguration()` function. The configuration object can be used to set the `app_key_provider` properties.
 
 ```javascript
 const configuration = OneSignal.createConfiguration({
