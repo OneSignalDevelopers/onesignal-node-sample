@@ -1,12 +1,12 @@
 import * as OneSignal from '@onesignal/node-onesignal';
-
+require('dotenv').config();
 const ONESIGNAL_APP_ID = 'ONESIGNAL_APP_ID';
 /*
  * CREATING ONESIGNAL KEY TOKENS
  */
  const app_key_provider = {
      getToken() {
-         return 'ONESIGNAL_REST_API_KEY';
+         return process.env.onesignal_api_key;
      }
  };
 console.log('app_key_provider', app_key_provider.getToken());
