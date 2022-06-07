@@ -28,7 +28,7 @@ To authentificate the app, you will need to use your OneSignal REST API key. Cre
 ```javascript
  const app_key_provider = {
      getToken() {
-         return 'ONESIGNAL_REST_API_KEY';
+         return process.env.REST_API_KEY';;
      }
  };
 ```
@@ -39,9 +39,6 @@ We can configure the client using the `createConfiguration()` function. The conf
 ```javascript
 const configuration = OneSignal.createConfiguration({
     authMethods: {
-        user_key: {
-            tokenProvider: user_key_provider
-        },
         app_key: {
             tokenProvider: app_key_provider
         }
