@@ -1,6 +1,7 @@
 import * as OneSignal from '@onesignal/node-onesignal';
-require('dotenv').config();
-const ONESIGNAL_APP_ID = 'ONESIGNAL_APP_ID';
+import 'dotenv/config';
+
+const ONESIGNAL_APP_ID = 'YOUR ONESIGNAL APP ID';
 /*
  * CREATING ONESIGNAL KEY TOKENS
  */

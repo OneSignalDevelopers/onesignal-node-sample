@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@onesignal/node-onesignal": "^1.0.0-beta4"
+    "@onesignal/node-onesignal": "^1.0.0-beta4",
+    "dotenv": "^16.0.1"
   }
 }

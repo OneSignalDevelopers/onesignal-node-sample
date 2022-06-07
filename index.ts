@@ -8,7 +8,7 @@ const ONESIGNAL_APP_ID: string = 'ONESIGNAL_APP_ID';
  */
  const app_key_provider:{ getToken(): string } = {
      getToken(): string {
-         return 'ONESIGNAL_REST_API_KEY';
+         return process.env.onesignal_api_key;
      }
  };
 console.log('app_key_provider', app_key_provider.getToken());
