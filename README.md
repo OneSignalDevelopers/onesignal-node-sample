@@ -15,6 +15,8 @@ This project was generated with [NodeJS](https://nodejs.org/de/blog/release/v14.
 
 Take a look at the [OneSignal documentation](https://documentation.onesignal.com/docs) to learn how to integrate OneSignal into your project. After you have integrated OneSignal into your application, you can use NodeJS to send push notification using the OneSignal NodeJS SDK Client Library.
 
+**Note:**: You can learn how to get the OneSignal App ID and OneSignal API Key [here](https://documentation.onesignal.com/docs/accounts-and-keys).
+
 ## Development server
 
 - Install the OneSignal NodeJS Client by running `npm install @onesignal/node-onesignal --save` (npm install).
