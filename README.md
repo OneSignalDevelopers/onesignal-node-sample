@@ -28,7 +28,7 @@ To authentificate the app, you will need to use your OneSignal REST API key. Cre
 ```javascript
  const app_key_provider = {
      getToken() {
-         return process.env.REST_API_KEY';;
+         return process.env.REST_API_KEY';
      }
  };
 ```
