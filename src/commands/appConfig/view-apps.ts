@@ -1,5 +1,4 @@
 import { Command, ux } from '@oclif/core'
-import { onesignalClient } from '../../onesignal-client'
 
 export default class ViewApps extends Command {
   static strict = false
@@ -17,11 +16,10 @@ export default class ViewApps extends Command {
     try {
       ux.action.start(`Retrieving apps '${argv.join(' ')}'`)
       // const result = await onesignalClient.getApps(argv)
+      ux.action.stop()
       // this.logJson(result)
     } catch (error) {
       this.logToStderr('Unable to retrieve apps.', (error as Error).message)
-    } finally {
-      ux.action.stop()
     }
   }
 }

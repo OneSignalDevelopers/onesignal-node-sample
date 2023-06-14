@@ -1,32 +1,26 @@
-import { Args, Command, ux } from '@oclif/core'
-import { onesignalClient } from '../../onesignal-client'
+import client from '@client'
+import { appId } from '@flags/common'
+import { Command, ux } from '@oclif/core'
 
 export default class View extends Command {
   static description = 'Retrieves an app given an AppID.'
 
   static examples = ['<%= config.bin %> <%= command.id %>']
 
-  static args = {
-    appId: Args.string({
-      name: 'appID',
-      description: 'The AppID of the application to retrieve.',
-      required: true,
-    }),
+  static flags = {
+    appId: appId({ required: true }),
   }
 
   public async run(): Promise<void> {
-    const {
-      args: { appId },
-    } = await this.parse(View)
+    const { flags } = await this.parse(View)
 
     try {
-      ux.action.start(`Retrieving app with ID '${appId}'`)
-      const result = await onesignalClient.getApp(appId)
-      this.logJson(result)
-    } catch (error: any) {
-      this.logToStderr(`Unable to retrieve app.`, error.message)
-    } finally {
+      ux.action.start(`Retrieving app with ID '${flags.appId}'`)
+      const result = await client.getApp(flags.appId)
       ux.action.stop()
+      this.logJson(result)
+    } catch (error) {
+      this.logToStderr(`Unable to retrieve app.`, (error as Error).message)
     }
   }
 }

@@ -1,6 +1,14 @@
-import { Args, Command, Flags, ux } from '@oclif/core'
+import { Args, Command, ux } from '@oclif/core'
 import * as OneSignal from '@onesignal/node-onesignal'
-import { onesignalClient } from '../../onesignal-client'
+import { appId } from '@flags/common'
+import client from '@client'
+import {
+  emailBody,
+  emailFrom,
+  emailSubject,
+  name,
+  type,
+} from '@flags/notification'
 
 export default class Create extends Command {
   static description = 'Send a message to a user or segment.'
@@ -10,44 +18,12 @@ export default class Create extends Command {
   ]
 
   static flags = {
-    appId: Flags.string({
-      name: 'appID',
-      char: 'A',
-      description: 'Application ID',
-      summary: 'The application ID of the app to send the message.',
-      required: true,
-    }),
-    name: Flags.string({
-      name: 'name',
-      char: 'N',
-      summary: 'An internal name to assist with your campaign organization.',
-      required: true,
-    }),
-    type: Flags.string({
-      name: 'type',
-      char: 't',
-      summary: 'What type of notification to create',
-      required: true,
-      options: ['push', 'email', 'sms'],
-      default: 'push',
-    }),
-    subject: Flags.string({
-      name: 'subject',
-      char: 'S',
-      summary: 'The subject of the email',
-      description: 'Email subject',
-    }),
-    body: Flags.string({
-      name: 'body',
-      char: 'B',
-      summary: 'The body of the email',
-      description: 'Email body',
-    }),
-    from: Flags.string({
-      name: 'from',
-      char: 'F',
-      summary: 'The email address the email is from',
-    }),
+    appId: appId({ required: true }),
+    name: name(),
+    type: type(),
+    subject: emailSubject(),
+    body: emailBody(),
+    from: emailFrom(),
   }
 
   static args = {
@@ -73,7 +49,7 @@ export default class Create extends Command {
 
         try {
           ux.action.start('Sending push notification')
-          const result = await onesignalClient.createNotification(notification)
+          const result = await client.createNotification(notification)
           ux.action.stop()
           this.logJson(result)
         } catch (error) {
@@ -94,7 +70,7 @@ export default class Create extends Command {
 
         try {
           ux.action.start('Sending email')
-          const result = await onesignalClient.createNotification(email)
+          const result = await client.createNotification(email)
           ux.action.stop()
           this.logJson(result)
         } catch (error) {

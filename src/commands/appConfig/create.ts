@@ -1,6 +1,7 @@
-import { Command, Flags, ux } from '@oclif/core'
+import client from '@client'
+import { Command, ux } from '@oclif/core'
 import * as OneSignal from '@onesignal/node-onesignal'
-import { onesignalClient } from '../../onesignal-client'
+import { name } from '@flags/app'
 
 export default class Create extends Command {
   static description = 'Create a new OneSignal app.'
@@ -8,12 +9,7 @@ export default class Create extends Command {
   static examples = ['<%= config.bin %> <%= command.id %>']
 
   static flags = {
-    name: Flags.string({
-      name: 'name',
-      char: 'n',
-      description: 'The name for your app',
-      required: true,
-    }),
+    name: name(),
   }
 
   public async run(): Promise<void> {
@@ -24,12 +20,11 @@ export default class Create extends Command {
 
     try {
       ux.action.start('Creating new app')
-      const result = await onesignalClient.createApp(app)
+      const result = await client.createApp(app)
+      ux.action.stop()
       this.logJson(result)
     } catch (error) {
       this.logToStderr('Unable to create app.', (error as Error).message)
-    } finally {
-      ux.action.stop()
     }
   }
 }

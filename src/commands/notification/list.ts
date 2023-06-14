@@ -1,5 +1,7 @@
+import client from '@client'
+import { appId } from '@flags/common'
+import { kind } from '@flags/notification'
 import { Command, Flags, ux } from '@oclif/core'
-import { onesignalClient } from '../../onesignal-client'
 
 export default class List extends Command {
   static description = 'describe the command here'
@@ -7,20 +9,8 @@ export default class List extends Command {
   static examples = ['<%= config.bin %> <%= command.id %>']
 
   static flags = {
-    appId: Flags.string({
-      name: 'appID',
-      char: 'A',
-      description: 'Application ID',
-      summary: 'The application ID of the app to send the message.',
-      required: true,
-    }),
-    kind: Flags.string({
-      name: 'kind',
-      char: 'k',
-      summary: 'Kind of notifications to retrieve.',
-      options: ['dashboard', 'api', 'journey'],
-      default: 'api',
-    }),
+    appId: appId({ required: true }),
+    kind: kind(),
     limit: Flags.integer({
       name: 'limit',
       char: 'L',
@@ -38,22 +28,13 @@ export default class List extends Command {
   public async run(): Promise<void> {
     const { flags } = await this.parse(List)
 
-    const kind =
-      flags.kind === 'dashboard'
-        ? 0
-        : flags.kind === 'api'
-        ? 1
-        : flags.kind === 'journey'
-        ? 3
-        : undefined
-
     try {
       ux.action.start(`Retrieving notifications for app '${flags.appId}'`)
-      const result = await onesignalClient.getNotifications(
+      const result = await client.getNotifications(
         flags.appId,
         flags.limit,
         flags.offset,
-        kind
+        this.codeFromKind(flags.kind)
       )
       ux.action.stop()
       this.logJson(result)
@@ -62,6 +43,19 @@ export default class List extends Command {
         `Unable to retrieve notifications.`,
         (error as Error).message
       )
+    }
+  }
+
+  private codeFromKind(kind?: string) {
+    switch (kind) {
+      case 'dashboard':
+        return 0
+      case 'api':
+        return 1
+      case 'journey':
+        return 3
+      default:
+        return undefined
     }
   }
 }

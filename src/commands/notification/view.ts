@@ -1,5 +1,6 @@
-import { Args, Command, Flags, ux } from '@oclif/core'
-import { onesignalClient } from '../../onesignal-client'
+import client from '@client'
+import { appId } from '@flags/common'
+import { Args, Command, ux } from '@oclif/core'
 
 export default class View extends Command {
   static description = 'View message details.'
@@ -7,13 +8,7 @@ export default class View extends Command {
   static examples = ['<%= config.bin %> <%= command.id %>']
 
   static flags = {
-    appId: Flags.string({
-      name: 'appID',
-      char: 'A',
-      description: 'Application ID',
-      summary: 'The application ID of the app to send the message.',
-      required: true,
-    }),
+    appId: appId({ required: true }),
   }
 
   static args = {
@@ -29,7 +24,7 @@ export default class View extends Command {
 
     try {
       ux.action.start(`Retrieving notification with ID '${args.notification}'`)
-      const result = await onesignalClient.getNotification(
+      const result = await client.getNotification(
         flags.appId,
         args.notification
       )

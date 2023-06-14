@@ -1,30 +1,27 @@
-import { Args, Command, Flags } from '@oclif/core'
+import { Command, ux } from '@oclif/core'
+import { appId } from '@flags/common'
+import client from '@client'
 
 export default class Update extends Command {
-  static description = 'describe the command here'
+  static description =
+    'Updates the name or configuration settings of an existing OneSignal app.'
 
   static examples = ['<%= config.bin %> <%= command.id %>']
 
   static flags = {
-    // flag with a value (-n, --name=VALUE)
-    name: Flags.string({ char: 'n', description: 'name to print' }),
-    // flag with no value (-f, --force)
-    force: Flags.boolean({ char: 'f' }),
-  }
-
-  static args = {
-    file: Args.string({ description: 'file to read' }),
+    appId: appId({ required: true }),
   }
 
   public async run(): Promise<void> {
-    const { args, flags } = await this.parse(Update)
+    const { flags } = await this.parse(Update)
 
-    const name = flags.name ?? 'world'
-    this.log(
-      `hello ${name} from /Users/iamwill/Desktop/onesignal-node-sample/src/commands/update-app.ts`
-    )
-    if (args.file && flags.force) {
-      this.log(`you input --force and --file: ${args.file}`)
+    try {
+      ux.action.start('Updating app')
+      const result = await client.updateApp(flags.appId, {})
+      this.logJson(result)
+      ux.action.stop()
+    } catch (error) {
+      this.logToStderr('Failed to update app', (error as Error).message)
     }
   }
 }
