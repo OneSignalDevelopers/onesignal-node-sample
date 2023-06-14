@@ -1,14 +1,14 @@
 import { Args, Command, ux } from '@oclif/core'
 import * as OneSignal from '@onesignal/node-onesignal'
-import { appId } from '@flags/common'
-import client from '@client'
+import { appId } from '../../flags/common'
+import { osClient } from '../../client'
 import {
   emailBody,
   emailFrom,
   emailSubject,
   name,
   type,
-} from '@flags/notification'
+} from '../../flags/notification'
 
 export default class Create extends Command {
   static description = 'Send a message to a user or segment.'
@@ -49,7 +49,7 @@ export default class Create extends Command {
 
         try {
           ux.action.start('Sending push notification')
-          const result = await client.createNotification(notification)
+          const result = await osClient.createNotification(notification)
           ux.action.stop()
           this.logJson(result)
         } catch (error) {
@@ -70,7 +70,7 @@ export default class Create extends Command {
 
         try {
           ux.action.start('Sending email')
-          const result = await client.createNotification(email)
+          const result = await osClient.createNotification(email)
           ux.action.stop()
           this.logJson(result)
         } catch (error) {

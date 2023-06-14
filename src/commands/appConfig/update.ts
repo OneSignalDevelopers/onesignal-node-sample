@@ -1,6 +1,7 @@
 import { Command, ux } from '@oclif/core'
-import { appId } from '@flags/common'
-import client from '@client'
+import { appId } from '../../flags/common'
+import { test } from '../../flags/app'
+import { osClient } from '../../client'
 
 export default class Update extends Command {
   static description =
@@ -10,6 +11,7 @@ export default class Update extends Command {
 
   static flags = {
     appId: appId({ required: true }),
+    test: test(),
   }
 
   public async run(): Promise<void> {
@@ -17,7 +19,7 @@ export default class Update extends Command {
 
     try {
       ux.action.start('Updating app')
-      const result = await client.updateApp(flags.appId, {})
+      const result = await osClient.updateApp(flags.appId, {})
       this.logJson(result)
       ux.action.stop()
     } catch (error) {

@@ -1,5 +1,5 @@
-import client from '@client'
-import { appId } from '@flags/common'
+import { osClient } from '../../client'
+import { appId } from '../../flags/common'
 import { Command, ux } from '@oclif/core'
 
 export default class View extends Command {
@@ -16,7 +16,7 @@ export default class View extends Command {
 
     try {
       ux.action.start(`Retrieving app with ID '${flags.appId}'`)
-      const result = await client.getApp(flags.appId)
+      const result = await osClient.getApp(flags.appId)
       ux.action.stop()
       this.logJson(result)
     } catch (error) {

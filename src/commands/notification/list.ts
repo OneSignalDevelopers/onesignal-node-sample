@@ -1,6 +1,6 @@
-import client from '@client'
-import { appId } from '@flags/common'
-import { kind } from '@flags/notification'
+import { osClient } from '../../client'
+import { appId } from '../../flags/common'
+import { kind } from '../../flags/notification'
 import { Command, Flags, ux } from '@oclif/core'
 
 export default class List extends Command {
@@ -30,7 +30,7 @@ export default class List extends Command {
 
     try {
       ux.action.start(`Retrieving notifications for app '${flags.appId}'`)
-      const result = await client.getNotifications(
+      const result = await osClient.getNotifications(
         flags.appId,
         flags.limit,
         flags.offset,

@@ -1,7 +1,7 @@
-import client from '@client'
+import { osClient } from '../../client'
 import { Command, ux } from '@oclif/core'
 import * as OneSignal from '@onesignal/node-onesignal'
-import { name } from '@flags/app'
+import { name } from '../../flags/app'
 
 export default class Create extends Command {
   static description = 'Create a new OneSignal app.'
@@ -20,7 +20,7 @@ export default class Create extends Command {
 
     try {
       ux.action.start('Creating new app')
-      const result = await client.createApp(app)
+      const result = await osClient.createApp(app)
       ux.action.stop()
       this.logJson(result)
     } catch (error) {

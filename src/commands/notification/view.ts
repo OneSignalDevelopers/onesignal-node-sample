@@ -1,5 +1,5 @@
-import client from '@client'
-import { appId } from '@flags/common'
+import { osClient } from '../../client'
+import { appId } from '../../flags/common'
 import { Args, Command, ux } from '@oclif/core'
 
 export default class View extends Command {
@@ -24,7 +24,7 @@ export default class View extends Command {
 
     try {
       ux.action.start(`Retrieving notification with ID '${args.notification}'`)
-      const result = await client.getNotification(
+      const result = await osClient.getNotification(
         flags.appId,
         args.notification
       )
