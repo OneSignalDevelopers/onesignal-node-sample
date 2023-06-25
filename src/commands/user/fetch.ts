@@ -12,7 +12,7 @@ export default class Fetch extends Command {
 
   static flags = {
     appId: appId({ required: true }),
-    aliasLabel: aliasLabel({ required: true }),
+    aliasLabel: aliasLabel({ default: 'onesignal_id' }),
     aliasId: aliasId({ required: true }),
   }
 
