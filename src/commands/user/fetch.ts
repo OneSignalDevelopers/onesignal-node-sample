@@ -22,13 +22,13 @@ export default class Fetch extends Command {
     } = await this.parse(Fetch)
 
     try {
-      ux.action.start('Creating new user')
+      ux.action.start('Fetching user')
       const result = await osClient.fetchUser(appId, aliasLabel, aliasId)
       ux.action.stop()
 
       this.logJson(result)
     } catch (error) {
-      this.logToStderr('Unable to create user.', (error as Error).message)
+      this.logToStderr('Unable to fetch user.', (error as Error).message)
     }
   }
 }
