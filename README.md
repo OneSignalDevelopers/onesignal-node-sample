@@ -33,9 +33,10 @@ From your terminal:
 
 1. Clone this project
 2. `cd` into the repository
-3. Open the `.env.local` environment file
-4. Set `ONESIGNAL_AUTH_KEY` and `ONESIGNAL_REST_API_KEY` environment variables
-5. Run a command e.g., `./bin/dev app list`
+3. Install dependencies by running `yarn`
+4. Open the `.env.local` environment file
+5. Set `ONESIGNAL_AUTH_KEY` and `ONESIGNAL_REST_API_KEY` environment variables
+6. Run a command e.g., `./bin/dev app list`
 
 For additional command help, run `.bin/dev --help`
 
