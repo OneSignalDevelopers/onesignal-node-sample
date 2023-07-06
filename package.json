@@ -1,17 +1,74 @@
 {
-  "name": "onesignal-nodejs-client-sample",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "type": "module",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+  "name": "onesignal-node-sample",
+  "version": "0.0.0",
+  "description": "Sample project demonstrating how to use OneSignal's Node backend SDK",
+  "author": "William Shepherd @iAmWillShepherd",
+  "bin": {
+    "onesignal-node-sample": "./bin/run"
   },
-  "author": "",
-  "license": "ISC",
+  "homepage": "https://github.com/OneSignalDevelopers/onesignal-node-sample",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "repository": "OneSignalDevelopers/onesignal-node-sample",
+  "files": [
+    "/bin",
+    "/dist",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
   "dependencies": {
-    "@onesignal/node-onesignal": "^1.0.0-beta4",
-    "dotenv": "^16.0.1"
-  }
+    "@oclif/core": "^2",
+    "@oclif/plugin-help": "^5",
+    "@oclif/plugin-plugins": "^2.4.7",
+    "@onesignal/node-onesignal": "^2.0.0-beta1",
+    "dotenv": "^16.1.4"
+  },
+  "devDependencies": {
+    "@oclif/test": "^2.3.21",
+    "@types/chai": "^4",
+    "@types/mocha": "^9.0.0",
+    "@types/node": "^16.18.34",
+    "chai": "^4",
+    "eslint": "^7.32.0",
+    "eslint-config-oclif": "^4",
+    "eslint-config-oclif-typescript": "^1.0.3",
+    "mocha": "^9",
+    "oclif": "^3",
+    "shx": "^0.3.3",
+    "ts-node": "^10.9.1",
+    "tslib": "^2.5.3",
+    "typescript": "^4.9.5"
+  },
+  "oclif": {
+    "bin": "onesignal-node-sample",
+    "dirname": "onesignal-node-sample",
+    "commands": "./dist/commands",
+    "plugins": [
+      "@oclif/plugin-help",
+      "@oclif/plugin-plugins"
+    ],
+    "topicSeparator": " ",
+    "topics": {
+      "hello": {
+        "description": "Say hello to the world and others"
+      }
+    }
+  },
+  "scripts": {
+    "build": "shx rm -rf dist && tsc -b",
+    "lint": "eslint . --ext .ts --config .eslintrc",
+    "postpack": "shx rm -f oclif.manifest.json",
+    "posttest": "yarn lint",
+    "prepack": "yarn build && oclif manifest && oclif readme",
+    "test": "mocha --forbid-only \"test/**/*.test.ts\"",
+    "version": "oclif readme && git add README.md"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "bugs": "https://github.com/OneSignalDevelopers/onesignal-node-sample/issues",
+  "keywords": [
+    "oclif"
+  ],
+  "types": "dist/index.d.ts"
 }
