@@ -7,10 +7,8 @@ export default class List extends Command {
   static examples = ['<%= config.bin %> <%= command.id %>']
 
   public async run(): Promise<void> {
-    const { argv } = await this.parse(List)
-
     try {
-      ux.action.start(`Retrieving apps '${argv.join(' ')}'`)
+      ux.action.start(`Retrieving apps`)
       const result = await osClient.getApps()
       ux.action.stop()
       this.logJson(result)

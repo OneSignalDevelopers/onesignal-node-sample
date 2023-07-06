@@ -1,93 +1,91 @@
-# OneSignal NodeJS-Push-Notifications-Sample
+![OneSignal](https://github.com/OneSignalDevelopers/.github/blob/main/assets/onesignal-banner.png?raw=true)
 
-<p>
-  <a href="https://github.com/OneSignal/onesignal-expo-plugin/graphs/commit-activity" target="_blank">
-    <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
-  </a>
-  <a href="https://twitter.com/onesignaldevs" target="_blank">
-    <img alt="Twitter: onesignaldevelopers" src="https://img.shields.io/twitter/follow/onesignaldevs?style=social" />
-  </a>
-</p>
+<div align="center">
+  <a href="https://documentation.onesignal.com/docs/onboarding-with-onesignal" target="_blank">Quickstart</a>
+  <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+  <a href="https://onesignal.com/" target="_blank">Website</a>
+  <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+  <a href="https://documentation.onesignal.com/docs" target="_blank">Docs</a>
+  <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+  <a href="https://github.com/OneSignalDevelopers" target="_blank">Examples</a>
+  <br />
+  <hr />
+</div>
 
-This sample NodeJS app demonstrates how to send push notifications to your app using the [OneSignal NodeJS SDK Client library](https://github.com/OneSignal/node-onesignal).
+# OneSignal Node Sample
 
-This project was generated with [NodeJS](https://nodejs.org/de/blog/release/v14.16.0/) version v14.16.0
+OneSignal makes engaging customers simple and is the fastest, most reliable service to send push notifications, in-app messages, SMS, and emails.
 
-Take a look at the [OneSignal documentation](https://documentation.onesignal.com/docs) to learn how to integrate OneSignal into your project. After you have integrated OneSignal into your application, you can use NodeJS to send push notification using the OneSignal NodeJS SDK Client Library.
+This project demonstrates integrating the **OneSignal Node SDK**. You can use this project as a boilerplate or reference to start your project.
 
-**Note:**: You can learn how to get the OneSignal App ID and OneSignal API Key [here](https://documentation.onesignal.com/docs/accounts-and-keys).
+## 🚦 Getting started
 
-## Development server
+This project assumes that you already have a OneSignal app created with push notifications setup. If you don't yet have a OneSignal app, [create one](https://documentation.onesignal.com/docs/apps-organizations#create-an-app) first.
 
-- Install the OneSignal NodeJS Client by running `npm install @onesignal/node-onesignal --save` (npm install).
+### Requirements
 
-- Run `npm run start` for a dev server. The app will automatically run the `createNotication()` which will make a call to our API to create a notficationwhich will be sent to your app.
+* Node v18
+* OneSignal account and project.
 
-### Tokens Builder
+### Usage
 
-To authentificate the app, you will need to use your OneSignal REST API key. Create a key provider object with the function `getToken()` that returns your key.
+From your terminal:
 
-```javascript
- const app_key_provider = {
-     getToken() {
-         return process.env.onesignal_api_key';
-     }
- };
+1. Clone this project
+2. `cd` into the repository
+3. Open the `.env.local` environment file
+4. Set `ONESIGNAL_AUTH_KEY` and `ONESIGNAL_REST_API_KEY` environment variables
+5. Run a command e.g., `./bin/dev app list`
+
+For additional command help, run `.bin/dev --help`
+
+```bash
+╰─$ ./bin/dev --help
+Sample project demonstrating how to use OneSignal's Node backend SDK
+
+VERSION
+  onesignal-node-sample/0.0.0 darwin-arm64 node-v18.16.0
+
+USAGE
+  $ onesignal-node-sample [COMMAND]
+
+TOPICS
+  app           Create a new OneSignal app.
+  notification  Send a message to a user or segment.
+  plugins       List installed plugins.
+  user          Create a new user.
+
+COMMANDS
+  help     Display help for onesignal-node-sample.
+  plugins  List installed plugins.
 ```
 
-### Client Configuration
-We can configure the client using the `createConfiguration()` function. The configuration object can be used to set the `app_key_provider` properties.
+# Support
 
-```javascript
-const configuration = OneSignal.createConfiguration({
-    authMethods: {
-        app_key: {
-            tokenProvider: app_key_provider
-        }
-    }
-});
-const client = new OneSignal.DefaultApi(configuration);
-```
+## Ask a question about OneSignal
 
-### Create Notification
+You can ask questions about the OneSignal xxx SDK and related topics in the **onesignal-xxx-sdk** repository.
 
-Create a push notification and send it to your users of your app.
+🙋‍♂️ [Ask a question](https://github.com/OneSignal/OneSignal-Node-SDK/issues/new?assignees=&labels=question&projects=&template=ask-question.yml&title=%5Bquestion%5D%3A+)
 
-- [Postman](https://www.postman.com/onesignaldevs/workspace/onesignal-api/request/16845437-c4f3498f-fd80-4304-a6c1-a3234b923f2c)
-- [REST API Reference](https://documentation.onesignal.com/reference#create-notification)
-- [NodeJS SDK Client Reference](https://documentation.onesignal.com/docs/node-client-sdk#creating-a-notification)
+## Create a bug report
 
-```javascript
-const notification = new OneSignal.Notification();
-notification.app_id = ONESIGNAL_APP_ID;
-notification.included_segments = ['Subscribed Users'];
-notification.contents = {
-  en: "Hello OneSignal!"
-};
+If you receive an error message or get blocked by an issue, please create a bug report!
 
-const {id} = await client.createNotification(notification);
-```
-### View Notification
+🪳 [Create bug report](https://github.com/OneSignal/OneSignal-Node-SDK/issues/new?assignees=&labels=bug%2Ctriage&projects=&template=bug-report.yml&title=%5BBug%5D%3A+)
 
-View the details from a push notification you have sent using OneSignal.
+# ❤️ Developer Community
 
-- [Postman](https://www.postman.com/onesignaldevs/workspace/onesignal-api/request/16845437-6c96ecf0-5882-4eac-a386-0d0cabc8ecd2)
-- [REST API Reference](https://documentation.onesignal.com/reference#view-notification)
-- [NodeJS SDK Client Reference](https://documentation.onesignal.com/docs/node-client-sdk#getting-notifications)
+For additional resources, please join the [OneSignal Developer Community](https://onesignal.com/onesignal-developers).
 
-```javascript
-const response = await client.getNotification(ONESIGNAL_APP_ID, id);
-console.log(response);
-```
+Get in touch with us or learn more about OneSignal through the channels below.
 
-### Show Your Support
+- [Follow us on Twitter](https://twitter.com/onesignaldevs) to never miss any updates from the OneSignal team, ecosystem & community
+- [Join us on Discord](https://discord.gg/EP7gf6Uz7G) to be a part of the OneSignal Developers community, showcase your work and connect with other OneSignal developers
+- [Read the OneSignal Blog](https://onesignal.com/blog/) for the latest announcements, tutorials, in-depth articles & more.
+- [Subscribe to us on YouTube](https://www.youtube.com/channel/UCe63d5EDQsSkOov-bIE_8Aw/featured) for walkthroughs, courses, talks, workshops & more.
+- [Follow us on Twitch](https://www.twitch.tv/onesignaldevelopers) for live streams, office hours, support & more.
 
-Give a :star:️ if this project helped you!
+## Show your support
 
-### Join the OneSignal Developers Community
-The OneSignal Developer community is a group of passionate individuals who work with OneSignal products. Community members have the opportunity to expand their network and knowledge across different technologies.
-
-* Website: https://onesignal.com/onesignal-developers
-* Twitter: [@OneSignalDevs](https://twitter.com/onesignal)
-* Github:  [@OneSignalDevelopers](https://github.com/OneSignal)
-* Discord: [@onesignal-metabase](https://linkedin.com/company/onesignal)
+Give a ⭐️ if this project helped you, and watch this repo to stay up to date.
