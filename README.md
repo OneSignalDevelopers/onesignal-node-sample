@@ -66,7 +66,7 @@ COMMANDS
 
 You can ask questions about the OneSignal xxx SDK and related topics in the **onesignal-xxx-sdk** repository.
 
-🙋‍♂️ [Ask a question](https://github.com/OneSignal/OneSignal-Node-SDK/issues/new?assignees=&labels=question&projects=&template=ask-question.yml&title=%5Bquestion%5D%3A+)
+🙋‍♂️ [Ask a question](https://github.com/OneSignal/onesignal-node-api/issues/new?assignees=&labels=triage&projects=&template=ask-question.yml&title=%5Bquestion%5D%3A+)
 
 ## Create a bug report
 
