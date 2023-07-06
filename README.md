@@ -1,7 +1,3 @@
-# OneSignal Node Sample
-
-![OneSignal](https://github.com/OneSignalDevelopers/.github/blob/main/assets/onesignal-banner.png?raw=true)
-
 <div align="center">
   <a href="https://documentation.onesignal.com/docs/onboarding-with-onesignal" target="_blank">Quickstart</a>
   <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
@@ -11,8 +7,12 @@
   <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
   <a href="https://github.com/OneSignalDevelopers" target="_blank">Examples</a>
   <br />
-  <hr />
+ <br />
 </div>
+
+![OneSignal](https://github.com/OneSignalDevelopers/.github/blob/main/assets/onesignal-banner.png?raw=true)
+
+# OneSignal Node Sample
 
 OneSignal makes engaging customers simple and is the fastest, most reliable service to send push notifications, in-app messages, SMS, and emails.
 
