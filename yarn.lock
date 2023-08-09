@@ -694,12 +694,12 @@
   dependencies:
     "@octokit/openapi-types" "^12.11.0"
 
-"@onesignal/node-onesignal@^2.0.0-beta1":
-  version "2.0.0-beta1"
-  resolved "https://registry.yarnpkg.com/@onesignal/node-onesignal/-/node-onesignal-2.0.0-beta1.tgz#59b32569ed8a3f7e5b479adc2812c274eef6afe7"
-  integrity sha512-8ieEHIdw6VSc7vhpnVhP/P/bKlicFH+8BOpmigoeLgGNK4FfbBEmPSWfW5Hdn0M/bXeDDToUF9g90hymgSxPog==
+"@onesignal/node-onesignal@^2.0.1-beta2":
+  version "2.0.1-beta2"
+  resolved "https://registry.yarnpkg.com/@onesignal/node-onesignal/-/node-onesignal-2.0.1-beta2.tgz#7ec66c70cceb9f9748f7cefd89e30557ae070002"
+  integrity sha512-UP1QNhXN3qtqrs2aeMP4bctCEggC0VMHgUjnwu5RGKOArUUN/lWFLJuMqcZzW3PldOvH6h9Q8f9HRouXc0QPWg==
   dependencies:
-    "@types/node" "^18.15.11"
+    "@types/node" "^20.4.5"
     "@types/node-fetch" "^2.5.7"
     btoa "^1.2.1"
     es6-promise "^4.2.4"
@@ -840,10 +840,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-15.14.9.tgz#bc43c990c3c9be7281868bbc7b8fdd6e2b57adfa"
   integrity sha512-qjd88DrCxupx/kJD5yQgZdcYKZKSIGBVDIBE1/LTGcNm3d2Np/jxojkdePDdfnBHJc5W7vSMpbJ1aB7p/Py69A==
 
-"@types/node@^18.15.11":
-  version "18.16.16"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.16.16.tgz#3b64862856c7874ccf7439e6bab872d245c86d8e"
-  integrity sha512-NpaM49IGQQAUlBhHMF82QH80J08os4ZmyF9MkpCzWAGuOHqE4gTEbhzd7L3l5LmWuZ6E0OiC1FweQ4tsiW35+g==
+"@types/node@^20.4.5":
+  version "20.4.9"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.4.9.tgz#c7164e0f8d3f12dfae336af0b1f7fdec8c6b204f"
+  integrity sha512-8e2HYcg7ohnTUbHk8focoklEQYvemQmu9M/f43DZVx43kHn0tE3BY/6gSDxS7k0SprtS0NHvj+L80cGLnoOUcQ==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.1"
