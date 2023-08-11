@@ -17,7 +17,7 @@ export default class Create extends Command {
     const { flags } = await this.parse(Create)
 
     const user = new OneSignal.User()
-    user.identity = { externalId: 'test_external_id' }
+    user.identity = { external_id: 'test_external_id' }
 
     try {
       ux.action.start('Creating new user')
