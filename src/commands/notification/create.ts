@@ -66,7 +66,7 @@ export default class Create extends Command {
         email.email_subject = flags.subject
         email.email_body = flags.body
         email.email_from_address = flags.from
-        email.include_email_tokens = ['william@onesignal.com']
+        email.include_email_tokens = ['email address here']
 
         try {
           ux.action.start('Sending email')
